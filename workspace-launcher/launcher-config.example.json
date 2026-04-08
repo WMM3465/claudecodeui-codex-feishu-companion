@@ -1,0 +1,11 @@
+{
+  "nodePath": "C:\\Program Files\\nodejs\\node.exe",
+  "browserPath": "",
+  "cloudCliRoot": "C:\\Users\\Administrator\\Desktop\\codex-workspace\\claudecodeui",
+  "cloudCliEntry": "server/index.js",
+  "cloudCliUrl": "http://localhost:3001",
+  "cloudCliPort": 3001,
+  "startBridge": true,
+  "bridgeDaemonPath": "C:\\Users\\Administrator\\.codex\\skills\\Claude-to-IM-skill\\dist\\daemon.mjs",
+  "waitTimeoutSeconds": 20
+}

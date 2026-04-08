@@ -91,6 +91,31 @@ cloudcli
 
 ---
 
+## Windows 一键启动器（Feishu + Codex 改造版）
+
+这个改造版额外提供了一套 **Windows 轻量启动器**，目标是做到：
+
+- 双击启动器
+- 自动检查并启动工作台
+- 自动检查并启动飞书 bridge
+- 自动用系统默认浏览器打开 `http://localhost:3001`
+
+相关脚本放在：
+
+[`workspace-launcher/`](./workspace-launcher)
+
+目录中包含：
+
+- `launch-workspace.ps1`
+- `start-workspace.cmd`
+- `launcher-config.example.json`
+- `package-launcher.sed`
+- `README.zh-CN.md`
+
+这套启动器不是把整个系统硬打包成一个重型桌面端，而是给 Windows 用户提供一个“点一下就进工作台”的轻量入口。
+
+---
+
 ## 哪个选项更适合你？
 
 CloudCLI UI 是 CloudCLI Cloud 的开源 UI 层。你可以在本地机器上自托管它，也可以使用提供团队功能与深入集成的 CloudCLI Cloud。
