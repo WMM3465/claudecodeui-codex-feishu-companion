@@ -116,6 +116,88 @@ cloudcli
 
 ---
 
+## 别人在自己电脑上使用这个改造版时，必须改什么
+
+如果你准备把这个项目交给同事、朋友，或者让别人的 Codex 直接读取仓库来帮他部署，请先让对方明确：
+
+- 这不是“下载后直接双击就能跑”的零配置项目
+- 每台电脑的本地路径、Codex 环境、bridge 路径、飞书配置都不一样
+- 所以**必须先改配置，再启动**
+
+### 最短迁移清单
+
+别人第一次接手时，至少要确认并修改下面这些内容：
+
+1. **Node.js 路径**
+   - 也就是本机 `node.exe` 的绝对路径
+   - 例如：`C:\\Program Files\\nodejs\\node.exe`
+
+2. **CloudCLI 项目根目录**
+   - 也就是这套 Web 工作台代码在他电脑上的实际路径
+   - 例如：`D:\\work\\claudecodeui`
+
+3. **Feishu bridge daemon 路径**
+   - 也就是他自己本机 `daemon.mjs` 的绝对路径
+   - 例如：`C:\\Users\\用户名\\.codex\\skills\\Claude-to-IM-skill\\dist\\daemon.mjs`
+
+4. **默认工作目录**
+   - 建议每个人自己准备一个固定目录，例如：
+   - `D:\\feishu-work`
+   - 不建议直接照搬别人的桌面路径
+
+5. **飞书 bridge 配置**
+   - 如果对方还没接好飞书，需要他自己准备：
+     - `App ID`
+     - `App Secret`
+     - 事件订阅
+     - callback / long connection 配置
+   - 如果对方的飞书已经接好，这一步可以跳过，只需要把这套 UI / bridge 规范同步过去
+
+### 如果对方飞书已经接好了，最少只要做这几件事
+
+- 拉取本仓库代码
+- 改好启动器配置
+- 确认本机 `CloudCLI` 路径
+- 确认本机 `daemon.mjs` 路径
+- 确认默认工作目录
+- 启动工作台并测试一轮桌面 <-> 飞书消息同步
+
+### 不要直接照搬的东西
+
+下面这些内容不要原样复制别人的值：
+
+- 绝对路径
+- `nodePath`
+- `cloudCliRoot`
+- `bridgeDaemonPath`
+- 默认工作目录
+- 个人飞书凭证
+- 个人 Git 身份
+
+### 给接手者的建议顺序
+
+建议让对方按这个顺序部署：
+
+1. 先确认本机 `Codex` 能正常工作
+2. 再确认飞书 bridge 本机能正常工作
+3. 再启动 `CloudCLI`
+4. 再接入这套“飞书 + Codex 共享工作台”
+5. 最后再考虑是否打包自己的启动器 exe
+
+### 给别人的 Codex 一句话提示
+
+如果你准备把这个仓库直接交给别人的 Codex 读取，建议让他先读这几个文件：
+
+- `README.zh-CN.md`
+- `workspace-launcher/README.zh-CN.md`
+- `workspace-launcher/launcher-config.example.json`
+
+然后让他的 Codex 先完成这件事：
+
+> 根据当前电脑的实际路径，填写启动器配置，并确认 CloudCLI 根目录、bridge daemon 路径、Node.js 路径、默认工作目录都指向本机真实位置；如果飞书已经接好，只同步这套共享工作台和桥接规范，不要重复重建飞书应用。
+
+---
+
 ## 哪个选项更适合你？
 
 CloudCLI UI 是 CloudCLI Cloud 的开源 UI 层。你可以在本地机器上自托管它，也可以使用提供团队功能与深入集成的 CloudCLI Cloud。
